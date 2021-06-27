@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <link rel="stylesheet" href="CSS/style.css">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Technical Documentation Page</title>
+</head>
+
+<body>
+    <!-- Main doc contains pages main Documentation -->
+    <main id="main-doc">
+
+        <nav id="navbar">
+            <header>
+                <h1 class="h-primary">C++ Documentation</h1>
+                <hr>
+            </header>
+            <ul id="content">
+                <li><a href="#Introduction" class="nav-link">Introduction</a></li>
+                <hr>
+                <li><a href="#Standard_Libraries" class="nav-link">Standard Libraries</a></li>
+                <hr>
+                <li><a href="#Function_Objects_in_C++" class="nav-link">Function Objects in C++</a></li>
+                <hr>
+                <li><a href="#Algorithms" class="nav-link">Algorithms</a></li>
+                <hr>
+                <li><a href="#Allocators" class="nav-link">Allocators</a></li>
+            </ul>
+        </nav>
+
+        <section class="main-section" id="Introduction">
+            <header>
+                <h1 class="h-primary">Introduction</h1>
+            </header>
+            <p>C++ is a general-purpose programming language created by Bjarne Stroustrup as an extension of the C
+                programming language, or "C with Classes". The language has expanded significantly over time, and
+                modern C++ now has object-oriented, generic, and functional features in addition to facilities for
+                low-level memory manipulation. It is almost always implemented as a compiled language, and many
+                vendors provide C++ compilers, including the Free Software Foundation, LLVM, Microsoft, Intel,
+                Oracle, and IBM, so it is available on many platforms.</p>
+
+            <p>
+                C++ was designed with an orientation toward system programming and embedded, resource-constrained
+                software and large systems, with performance, efficiency, and flexibility of use as its design
+                highlights. C++ has also been found useful in many other contexts, with key strengths being
+                software infrastructure and resource-constrained applications, including desktop applications,
+                video games, servers (e.g. e-commerce, web search, or databases), and performance-critical
+                applications (e.g. telephone switches or space probes).
+            </p>
+
+            <p>
+                C++ is standardized by the International Organization for Standardization (ISO), with the latest
+                standard version ratified and published by ISO in December 2020 as ISO/IEC 14882:2020 (informally
+                known as C++20). The C++ programming language was initially standardized in 1998 as ISO/IEC
+                14882:1998, which was then amended by the C++03, C++11, C++14, and C++17 standards. The current
+                C++20 standard supersedes these with new features and an enlarged standard library. Before the
+                initial standardization in 1998, C++ was developed by Danish computer scientist Bjarne Stroustrup at
+                Bell Labs since 1979 as an extension of the C language; he wanted an efficient and flexible language
+                similar to C that also provided high-level features for program organization. Since 2012, C++ has
+                been on a three-year release schedule with C++23 as the next planned standard.
+            </p>
+
+        </section>
+        <section class="main-section" id="Standard_Libraries">
+            <header>
+                <h1 class="h-primary">Standard Libraries</h1>
+            </header>
+            <p>You include the contents of a standard header by naming it in an include directive.</p>
+            <code>
+                    #include <iostream>// include I/O facilities
+                </code>
+            <p>You can include the standard headers in any order, a standard header more than once, or two or more
+                standard headers that define the same macro or the same type. Do not include a standard header
+                within a declaration. Do not define macros that have the same names as keywords before you include a
+                standard header.</p>
+            <p>A C++ library header includes any other C++ library headers it needs to define needed types. (Always
+                include explicitly any C++ library headers needed in a translation unit, however, lest you guess
+                wrong about its actual dependencies.) A Standard C header never includes another standard header. A
+                standard header declares or defines only the entities described for it in this document.</p>
+            <p>Every function in the library is declared in a standard header. Unlike in Standard C, the standard
+                header never provides a masking macro with the same name as the function that masks the function
+                declaration and achieves the same effect. For more information on masking macros, see C++ Library
+                Conventions.</p>
+            <p>All names other than operator delete and operator new in the C++ library headers are defined in the
+                std namespace, or in a namespace nested within the std namespace. You refer to the name cin, for
+                example, as std::cin. Note, however, that macro names are not subject to namespace qualification, so
+                you always write __STD_COMPLEX without a namespace qualifier.</p>
+            <p>In some translation environments, including a C++ library header may hoist external names declared in
+                the std namespace into the global namespace as well, with individual using declarations for each of
+                the names. Otherwise, the header does not introduce any library names into the current namespace.
+            </p>
+            <p>The C++ Standard requires that the C Standard headers declare all external names in namespace std,
+                then hoist them into the global namespace with individual using declarations for each of the names.
+                But in some translation environments the C Standard headers include no namespace declarations,
+                declaring all names directly in the global namespace. Thus, the most portable way to deal with
+                namespaces is to follow two rules:</p>
+            <ul>
+                <li>To assuredly declare in namespace std an external name that is traditionally declared in
+                    <stdlib.h>, for example, include the header <cstdlib>. Know that the name might also be declared
+                            in the global namespace.
+                </li>
+                <li>To assuredly declare in the global namespace an external name declared in <stdlib.h>, include
+                        the header <stdlib.h> directly. Know that the name might also be declared in namespace std.
+                </li>
+                <li>Thus, if you want to call std::abort to cause abnormal termination, you should include <cstdlib>
+                        . If you want to call abort, you should include <stdlib.h>.
+
+                </li>
+            </ul>
+            <p>Alternatively, you can write the declaration:</p>
+            <code>using namespace std;</code>
+
+        </section>
+        <section class="main-section" id="Function_Objects_in_C++">
+            <header>
+                <h1 class="h-primary">Function Objects in C++</h1>
+            </header>
+            <p>A function object, or functor, is any type that implements operator(). This operator is referred to
+                as the call operator or sometimes the application operator. The C++ Standard Library uses function
+                objects primarily as sorting criteria for containers and in algorithms.</p>
+            <p>Function objects provide two main advantages over a straight function call. The first is that a
+                function object can contain state. The second is that a function object is a type and therefore can
+                be used as a template parameter.</p>
+            <p>To create a function object, create a type and implement operator(), such as:</p>
+            <code>class Functor <br>
+                    { <br>
+                    public: <br>
+                        int operator()(int a, int b) <br>
+                        { <br>
+                            return a < b; <br>
+                        } <br>
+                    }; <br>
+                    <br>
+                    int main() <br>
+                    { <br>
+                        Functor f; <br>
+                        int a = 5; <br>
+                        int b = 7; <br>
+                        int ans = f(a, b); <br>
+                    }</code> <br>
+            <p>The last line of the main function shows how you call the function object. This call looks like a
+                call to a function, but it's actually calling operator() of the Functor type. This similarity
+                between calling a function object and a function is how the term function object came about.</p>
+            <p>The C++ Standard Library contains several function objects in the <functional> header file. One use
+                    of these function objects is as a sorting criterion for containers. For example, the set
+                    container is declared as follows:</p>
+            <code>template <class Key,
+                            class Traits=less<Key>,
+                            class Allocator=allocator<Key>>
+                        class set</code>
+        </section>
+        <section class="main-section" id="Algorithms">
+            <header>
+                <h1 class="h-primary">Algorithms</h1>
+            </header>
+            <p>Algorithms are a fundamental part of the C++ Standard Library. Algorithms do not work with containers
+                themselves but rather with iterators. Therefore, the same algorithm can be used by most if not all of
+                the C++ Standard Library containers. This section discusses the conventions and terminology of the C++
+                Standard Library algorithms.</p>
+            <p>The descriptions of the algorithm template functions employ several shorthand phrases:</p>
+            <ul>
+                <li>The phrase "in the range [A, B)" means the sequence of zero or more discrete values beginning with A
+                    up to but not including B. A range is valid only if B is reachable from A; you can store A in an
+                    object N (N = A), increment the object zero or more times (++N), and have the object compare equal
+                    to B after a finite number of increments (N == B).</li>
+                <li>The phrase "each N in the range [A, B)" means that N begins with the value A and is incremented zero
+                    or more times until it equals the value B. The case N == B is not in the range.</li>
+                <li>The phrase "the lowest value of N in the range [A, B) such that X" means that the condition X is
+                    determined for each N in the range [A, B) until the condition X is met.</li>
+                <li>The phrase "the highest value of N in the range [A, B) such that X means that X is determined for
+                    each N in the range [A, B). The function stores in K a copy of N each time the condition X is met.
+                    If any such store occurs, the function replaces the final value of N, which equals B, with the value
+                    of K. For a bidirectional or random-access iterator, however, it can also mean that N begins with
+                    the highest value in the range and is decremented over the range until the condition X is met.</li>
+                <li>Expressions such as X - Y, where X and Y can be iterators other than random-access iterators, are
+                    intended in the mathematical sense. The function does not necessarily evaluate operator - if it must
+                    determine such a value. The same is also true for expressions such as X + N and X - N, where N is an
+                    integer type.</li>
+            </ul>
+            <p>Several algorithms make use of a predicate that performs a pairwise comparison, such as with operator==,
+                to yield a bool result. The predicate function operator==, or any replacement for it, must not alter
+                either of its operands. It must yield the same bool result every time it is evaluated, and it must yield
+                the same result if a copy of either operand is substituted for the operand.</p>
+        </section>
+        <section class="main-section" id="Allocators">
+            <header>
+                <h1 class="h-primary">Allocators</h1>
+            </header>
+            <p>Allocators are used by the C++ Standard Library to handle the allocation and deallocation of elements
+                stored in containers. All C++ Standard Library containers except std::array have a template parameter of
+                type allocator<Type>, where Type represents the type of the container element. For example, the vector
+                    class is declared as follows:</p>
+            <code>template 
+                class Type,
+                class Allocator = allocator<Type>
+            >
+            class vector</code>
+            <p>The C++ Standard Library provides a default implementation for an allocator. In C++11 and later, the
+                default allocator is updated to expose a smaller interface; the new allocator is called a minimal
+                allocator. In particular, the minimal allocator's construct() member supports move semantics, which can
+                greatly improve performance. In most cases, this default allocator should be sufficient. In C++11 all
+                the Standard Library types and functions that take an allocator type parameter support the minimal
+                allocator interface, including std::function, shared_ptr, allocate_shared(), and basic_string. For more
+                information on the default allocator, see allocator Class.</p>
+            <p>The following example shows a minimal implementation of an allocator that uses malloc and free. Note the
+                use of the new exception type std::bad_array_new_length which is thrown if the array size is less than
+                zero or greater than the maximum allowed size.</p>
+            <code>#pragma once <br>
+                #include <stdlib.h> //size_t, malloc, free <br>
+                #include <new> // bad_alloc, bad_array_new_length <br>
+                #include <memory> <br>
+                template <class T> <br>
+                struct Mallocator <br>
+                { <br>
+                    typedef T value_type; <br>
+                    Mallocator() noexcept {} //default ctor not required by C++ Standard Library <br>
+                
+                    // A converting copy constructor: <br>
+                    template<class U> Mallocator(const Mallocator<U>&) noexcept {} <br>
+                    template<class U> bool operator==(const Mallocator<U>&) const noexcept <br>
+                    { <br>
+                        return true; <br>
+                    }  <br> <br>
+                    template<class U> bool operator!=(const Mallocator<U>&) const noexcept <br>
+                    { <br>
+                        return false; <br>
+                    } <br>
+                    T* allocate(const size_t n) const; <br>
+                    void deallocate(T* const p, size_t) const noexcept; <br>
+                }; <br>
+                 <br>
+                template <class T> <br>
+                T* Mallocator<T>::allocate(const size_t n) const <br>
+                { <br>
+                    if (n == 0) <br>
+                    { <br>
+                        return nullptr; <br>
+                    } <br>
+                    if (n > static_cast<size_t>(-1) / sizeof(T)) <br>
+                    { <br>
+                        throw std::bad_array_new_length(); <br>
+                    } <br>
+                    void* const pv = malloc(n * sizeof(T)); <br>
+                    if (!pv) { throw std::bad_alloc(); } <br>
+                    return static_cast<T*>(pv); <br>
+                } <br>
+                 <br>
+                template<class T> <br>
+                void Mallocator<T>::deallocate(T * const p, size_t) const noexcept <br>
+                { <br>
+                    free(p); <br>
+                }</code> <br>
+        </section>
+    </main>
+</body>
+
+</html>

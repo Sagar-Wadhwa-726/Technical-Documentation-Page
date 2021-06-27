@@ -1,0 +1,140 @@
+CSS RESET
+*{
+    padding: 0px;
+    margin: 0px;
+    
+}
+
+html{
+
+    /*For using rem unit in fonts*/
+    font-size: 10px;
+    scroll-behavior: smooth;
+    font-family: 'Roboto', sans-serif;
+    background-color: rgb(228, 254, 255);
+}
+
+#navbar{
+    display: flex;
+    flex-direction: column;
+    position: sticky;
+    top:0px;
+    left:0px;
+    width:30%;
+    margin: -363px;
+    border-right: 1px solid blue;
+    border-bottom: 1px solid blue;
+}
+
+#navbar ul li {
+    padding: 8px;
+    margin:9px;
+    list-style: none
+}
+
+.main-section{
+    margin-top: 270px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 50%;
+    justify-content: center;
+    margin-left: 572px;
+}
+
+
+/*Utility Classes*/
+
+.h-primary{
+    text-align: center;
+    font-size: 3.8rem;
+    font-family: 'Noto Sans HK', sans-serif;
+    display: inline-block;
+    position: center;
+    margin:5px auto;
+    padding:5px;
+    border-radius: 10px;
+    margin-top:30px;
+}
+
+p{
+    font-size: 1.8rem;
+    color:black;
+}
+
+
+a{
+    text-decoration: none;
+    color:black;
+    font-size: 1.8rem;
+    line-height: 3rem;
+    transition: all 0.6s ease-in;
+   
+    
+}
+
+code{
+    font-size: 2rem;
+}
+
+#content li:hover{
+    transform: scale(1.1);
+}
+
+li{
+    font-size:1.8rem;
+}
+
+/*Fonts imported*/
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+HK&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+@media only screen and (max-width:1072px) {
+    
+    .h-primary{
+        text-align: center;
+        font-size: 2.8rem;
+        font-family: 'Noto Sans HK', sans-serif;
+        display: inline-block;
+        position: center;
+        margin:0px auto;
+        padding:0px;
+        border-radius: 10px;
+        margin-top:10px;
+    }
+    .main-section{
+        margin-top: 320px;
+        margin-left: 300px;
+    }
+    
+}
+
+@media only screen and (max-width:701px) {
+    .h-primary{
+        font-size:1.7rem ;
+    }
+    
+    
+}
+
+@media only screen and (max-width:528px) {
+    .h-primary{
+        font-size:1.7rem ;
+    }
+    #navbar{
+        width:50%;
+    }
+    
+}
+@media only screen and (max-width:320px) {
+    .h-primary{
+        font-size:1.7rem ;
+    }
+    #navbar{
+        width:70%;
+    }
+    .main-section{
+        margin-top: 270px;
+        margin-left: 230px;
+    }
+    
+}
